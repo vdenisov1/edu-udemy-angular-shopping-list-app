@@ -1,0 +1,6 @@
+<p *ngIf="editMode; else newMode">
+  Edit Mode
+</p>
+<ng-template #newMode>
+  <p>New Mode</p>
+</ng-template>
