@@ -33,11 +33,7 @@ export class RecipeService {
   }
 
   getRecipeById(id: number) {
-    for (const recipe of this.recipes) {
-      if (recipe.id === id) {
-        return recipe;
-      }
-    }
+   return this.recipes[id];
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
@@ -46,5 +42,13 @@ export class RecipeService {
     //   this.shoppingListService.addIngredient(ingredient);
     // }
     this.shoppingListService.addIngredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipe) {
+
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe){
+
   }
 }
