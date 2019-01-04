@@ -4,7 +4,7 @@ import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { Subject } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class RecipeService {
   private recipes: Recipe[] = [
     new Recipe(
@@ -43,6 +43,12 @@ export class RecipeService {
     //   this.shoppingListService.addIngredient(ingredient);
     // }
     this.shoppingListService.addIngredients(ingredients);
+  }
+
+  setRecipes(recipes: Recipe[]) {
+    console.log('setRecipes');
+    this.recipes = recipes;
+    this.recipesChanged.next(this.getRecipes());
   }
 
   addRecipe(recipe: Recipe) {
