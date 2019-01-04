@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit, OnDestroy {
+  id: number;
   recipe: Recipe;
   private paramSubscription: Subscription;
 
@@ -18,7 +19,8 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute) { }
 
   loadRecipeDetail(params: Params) {
-    this.recipe = this.recipeService.getRecipeById(+params.id);
+    this.id = +params.id;
+    this.recipe = this.recipeService.getRecipeById(this.id);
 
     if (!this.recipe) {
       this.router.navigate([''], { relativeTo: this.route });
@@ -39,6 +41,11 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
 
   onAddToShoppingList() {
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
+  }
+
+  onDelete() {
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
 }

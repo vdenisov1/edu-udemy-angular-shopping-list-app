@@ -3,14 +3,12 @@ import { RecipeService } from './recipe.service';
 import { Injectable } from '@angular/core';
 
 export class Recipe {
-  public id: number;
   public name: string;
   public description: string;
   public imagePath: string;
   public ingredients: Ingredient[];
 
-  constructor(id: number, name: string, desc: string, imagePath: string, ingredients: Ingredient[]) {
-    this.id = id;
+  constructor(name: string, desc: string, imagePath: string, ingredients: Ingredient[]) {
     this.name = name;
     this.description = desc;
     this.imagePath = imagePath;

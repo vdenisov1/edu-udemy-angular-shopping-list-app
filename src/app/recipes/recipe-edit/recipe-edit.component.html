@@ -37,7 +37,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <img src="{{ recipeForm.get('imagePath').value }}" class="img-responsive">
+          <img [src]="recipeForm.get('imagePath').value" class="img-responsive">
         </div>
       </div>
       <div class="row">
@@ -65,7 +65,7 @@
               <input type="text" class="form-control" formControlName="amount">
             </div>
             <div class="col-xs-2">
-              <button class="btn btn-danger">X</button>
+              <button type="button" class="btn btn-danger" (click)="onRemoveIngredient(i)">X</button>
             </div>
           </div>
           <hr>
