@@ -14,13 +14,13 @@ import { CoreModule } from './core/core.module';
     AppComponent,
   ],
   imports: [
+    CoreModule,
     ShoppingListModule,
     AuthModule,
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    SharedModule,
-    CoreModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
