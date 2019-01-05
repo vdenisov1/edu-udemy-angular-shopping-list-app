@@ -43,4 +43,5 @@ testem.log
 Thumbs.db
 
 .wakatime-project
-.env
+.env.ts
+api.environment.ts
