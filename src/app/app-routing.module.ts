@@ -8,7 +8,7 @@ import { AuthGuard } from './auth/auth-guard.service';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule', canLoad: [AuthGuard] },
-  { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'shopping-list', loadChildren: './shopping-list/shopping-list.module#ShoppingListModule', canLoad: [AuthGuard] },
 ];
 
 @NgModule({
