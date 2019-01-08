@@ -20,7 +20,7 @@ export class AuthService {
           firebase.auth().currentUser.getIdToken()
             .then(
               (token: string) => {
-                this.token = token
+                this.token = token;
                 this.router.navigate(['recipes']);
               }
             );
@@ -43,7 +43,8 @@ export class AuthService {
   }
 
   logout() {
-    firebase.auth().signOut()
+    firebase.auth().signOut();
     this.token = null;
+    this.router.navigate(['']);
   }
 }
