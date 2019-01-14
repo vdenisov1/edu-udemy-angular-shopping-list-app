@@ -1,10 +1,7 @@
 import { Recipe } from './recipe.model';
-import { Injectable, EventEmitter } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
-import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { Subject } from 'rxjs';
 
-@Injectable()
 export class RecipeService {
   private recipes: Recipe[] = [
     new Recipe(
@@ -27,7 +24,7 @@ export class RecipeService {
 
   recipesChanged = new Subject<Recipe[]>();
 
-  constructor(private shoppingListService: ShoppingListService) {}
+  constructor() {}
 
   getRecipes() {
     return this.recipes.slice();
@@ -35,14 +32,6 @@ export class RecipeService {
 
   getRecipeById(id: number) {
    return this.recipes[id];
-  }
-
-  addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    // This is inefficient - emitting too many events
-    // for (const ingredient of ingredients) {
-    //   this.shoppingListService.addIngredient(ingredient);
-    // }
-    this.shoppingListService.addIngredients(ingredients);
   }
 
   setRecipes(recipes: Recipe[]) {
@@ -56,7 +45,7 @@ export class RecipeService {
     this.recipesChanged.next(this.getRecipes());
   }
 
-  updateRecipe(index: number, newRecipe: Recipe){
+  updateRecipe(index: number, newRecipe: Recipe) {
     this.recipes[index] = newRecipe;
     this.recipesChanged.next(this.getRecipes());
   }
