@@ -22,7 +22,9 @@
             routerLinkActive="active"
             [routerLink]="['signin']">Sign In</a></li>
         </ng-template>
+
         <li *ngIf="(authState | async).authenticated"><a role="button" (click)="onLogout()">Log Out</a></li>
+        
         <li class="dropdown" appDropdown *ngIf="(authState | async).authenticated">
           <a style="cursor: pointer;"  
              class="dropdown-toggle" 
