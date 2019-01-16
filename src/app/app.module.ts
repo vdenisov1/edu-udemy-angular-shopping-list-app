@@ -24,7 +24,7 @@ import { AuthEffects } from './auth/store/auth.effects';
     CoreModule,
     ShoppingListModule,
     AuthModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: "my-app" }),
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
