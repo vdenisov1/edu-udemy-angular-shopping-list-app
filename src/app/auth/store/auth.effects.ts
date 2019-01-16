@@ -1,11 +1,10 @@
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
-import { fromPromise } from 'rxjs/observable/fromPromise';
 import * as AuthActions from './auth.actions';
 import { map, switchMap, mergeMap, tap } from 'rxjs/operators';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
-import 'rxjs/add/operator/do';
+import { from } from 'rxjs';
 
 @Injectable()
 export class AuthEffects {
@@ -16,14 +15,14 @@ export class AuthEffects {
       return action.payload;
     }),
     switchMap((authData: { username: string; password: string }) => {
-      return fromPromise(
+      return from(
         firebase
           .auth()
           .createUserWithEmailAndPassword(authData.username, authData.password)
       );
     }),
     switchMap(() => {
-      return fromPromise(firebase.auth().currentUser.getIdToken());
+      return from(firebase.auth().currentUser.getIdToken());
     }),
     mergeMap((token: string) => {
       this.router.navigate(['/']);
@@ -46,14 +45,14 @@ export class AuthEffects {
       return action.payload;
     }),
     switchMap((authData: { username: string; password: string }) => {
-      return fromPromise(
+      return from(
         firebase
           .auth()
           .signInWithEmailAndPassword(authData.username, authData.password)
       );
     }),
     switchMap(() => {
-      return fromPromise(firebase.auth().currentUser.getIdToken());
+      return from(firebase.auth().currentUser.getIdToken());
     }),
     mergeMap((token: string) => {
       this.router.navigate(['/']);

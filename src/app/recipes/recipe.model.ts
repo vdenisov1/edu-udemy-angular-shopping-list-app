@@ -1,6 +1,4 @@
 import { Ingredient } from '../shared/ingredient.model';
-import { RecipeService } from './recipe.service';
-import { Injectable } from '@angular/core';
 
 export class Recipe {
   public name: string;
